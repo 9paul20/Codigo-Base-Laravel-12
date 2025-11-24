@@ -1,0 +1,307 @@
+{
+  "info": {
+    "name": "Laravel 12 API - Permisos y Roles",
+    "description": "Colección de pruebas para los endpoints de permisos y roles en Laravel 12",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000/api/v1",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL3YxL2F1dGgvbG9naW4iLCJpYXQiOjE3NjE2MDAzNzQsImV4cCI6MTc2MTYwMzk3NCwibmJmIjoxNzYxNjAwMzc0LCJqdGkiOiJZMmViVmRjQ1RrSEZqSm51Iiwic3ViIjoiMTEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.OTMMB2KTudeN4nkmd32j1tV7dolJst6trgBBNP8y67s",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Permisos",
+      "item": [
+        {
+          "name": "Listar Permisos",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/permissions",
+              "host": ["{{base_url}}"],
+              "path": ["permissions"]
+            },
+            "description": "Obtiene una lista paginada de todos los permisos disponibles"
+          }
+        },
+        {
+          "name": "Obtener Permiso Específico",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/permissions/1",
+              "host": ["{{base_url}}"],
+              "path": ["permissions", "1"]
+            },
+            "description": "Obtiene los detalles de un permiso específico por ID"
+          }
+        },
+        {
+          "name": "Crear Nuevo Permiso",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Usuario Actualizado\",\n  \"email\": \"actualizado@example.com\",\n  \"status_id\": 1,\n  \"roles\": [1, 2]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/permissions",
+              "host": ["{{base_url}}"],
+              "path": ["permissions"]
+            },
+            "description": "Crea un nuevo permiso en el sistema"
+          }
+        },
+        {
+          "name": "Actualizar Permiso",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"updated test permission\",\n  \"guard_name\": \"web\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/permissions/14",
+              "host": ["{{base_url}}"],
+              "path": ["permissions", "14"]
+            },
+            "description": "Actualiza un permiso existente (cambiar el ID según corresponda)"
+          }
+        },
+        {
+          "name": "Eliminar Permiso",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/permissions/14",
+              "host": ["{{base_url}}"],
+              "path": ["permissions", "14"]
+            },
+            "description": "Elimina un permiso del sistema (cambiar el ID según corresponda)"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Roles",
+      "item": [
+        {
+          "name": "Listar Roles",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/roles",
+              "host": ["{{base_url}}"],
+              "path": ["roles"]
+            },
+            "description": "Obtiene una lista paginada de todos los roles con sus permisos asociados"
+          }
+        },
+        {
+          "name": "Obtener Rol Específico",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/roles/1",
+              "host": ["{{base_url}}"],
+              "path": ["roles", "1"]
+            },
+            "description": "Obtiene los detalles de un rol específico por ID con sus permisos"
+          }
+        },
+        {
+          "name": "Crear Nuevo Rol",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"moderator\",\n  \"guard_name\": \"web\",\n  \"permissions\": [1, 2, 3, 5, 9]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/roles",
+              "host": ["{{base_url}}"],
+              "path": ["roles"]
+            },
+            "description": "Crea un nuevo rol en el sistema con permisos asignados"
+          }
+        },
+        {
+          "name": "Actualizar Rol",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"content moderator\",\n  \"guard_name\": \"web\",\n  \"permissions\": [1, 3, 5, 9, 10]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/roles/3",
+              "host": ["{{base_url}}"],
+              "path": ["roles", "3"]
+            },
+            "description": "Actualiza un rol existente y sus permisos asignados (cambiar el ID según corresponda)"
+          }
+        },
+        {
+          "name": "Eliminar Rol",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/roles/3",
+              "host": ["{{base_url}}"],
+              "path": ["roles", "3"]
+            },
+            "description": "Elimina un rol del sistema (cambiar el ID según corresponda)"
+          }
+        }
+      ]
+    }
+  ]
+}
