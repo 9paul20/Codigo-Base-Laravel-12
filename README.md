@@ -74,16 +74,25 @@ graph TD
     I --> J[HTTP Response]
     J --> K[Cliente]
 
-    style A fill:#e1f5fe
-    style J fill:#e8f5e8
-    style B fill:#fff3e0
-    style C fill:#fff3e0
-    style D fill:#f3e5f5
-    style E fill:#e8eaf6
-    style F fill:#f1f8e9
-    style G fill:#fce4ec
-    style H fill:#e0f2f1
-    style I fill:#f9fbe7
+    classDef cliente fill:#e1f5fe,stroke:#333,stroke-width:2px
+    classDef respuesta fill:#e8f5e8,stroke:#333,stroke-width:2px
+    classDef middleware fill:#fff3e0,stroke:#333,stroke-width:2px
+    classDef controller fill:#f3e5f5,stroke:#333,stroke-width:2px
+    classDef validation fill:#e8eaf6,stroke:#333,stroke-width:2px
+    classDef service fill:#f1f8e9,stroke:#333,stroke-width:2px
+    classDef repository fill:#fce4ec,stroke:#333,stroke-width:2px
+    classDef database fill:#e0f2f1,stroke:#333,stroke-width:2px
+    classDef resource fill:#f9fbe7,stroke:#333,stroke-width:2px
+
+    class A,K cliente
+    class J respuesta
+    class B,C middleware
+    class D controller
+    class E validation
+    class F service
+    class G repository
+    class H database
+    class I resource
 ```
 
 Cada módulo (Users, Roles, Permissions, Statuses) sigue este flujo para garantizar consistencia y testabilidad.
